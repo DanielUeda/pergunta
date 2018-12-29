@@ -1,0 +1,68 @@
+<div class="perfil">
+    <div class="row">
+        <div class="col s3">
+            teste
+        </div>
+        <div class="col s9">
+            <div class="row">
+                <div class="col s12" style="text-align : right">
+                    <h5>meu perfil</h5>
+                </div>
+            </div>
+            <div class="row">
+                <form class="col s12" #formRegistro="ngForm">
+                    
+                    <div class="input-field col s12">
+                        @{{usuario.login}}
+                        <br/>
+                        {{usuario.email}}
+                    </div>
+    
+                    <div class="input-field col s12">
+                        <input type="password" name="senha" id="senha" required 
+                            [(ngModel)]="usuario.senha" #senha="ngModel" />
+                        <label for="senha">Senha</label>
+                        <small class="red-text" 
+                            *ngIf="senha.invalid && senha.touched">
+                            Campo obrigatório
+                        </small>
+                    </div>
+    
+                    <div class="input-field col s12">
+                        <input type="text" name="nome" id="nome" required
+                            [(ngModel)]="usuario.nome" #nome="ngModel" />
+                        <label for="nome">Nome</label>
+                        <small class="red-text" 
+                            *ngIf="nome.invalid && nome.touched">
+                            Campo obrigatório
+                        </small>
+                    </div>
+    
+                    <div class="input-field col s12">
+                        <input type="text" name="bio" id="bio" required
+                            [(ngModel)]="usuario.bio" #bio="ngModel" />
+                        <label for="bio">Bio</label>
+                        <small class="red-text" 
+                            *ngIf="bio.invalid && bio.touched">
+                            Campo obrigatório
+                        </small>
+                    </div>
+                </form>
+            </div>
+            <div class="row">
+                <div class="col s6">
+                    <button class="btn btn-large waves-effect waves-light grey darken-3" 
+                        style="width: 100%" [disabled]="formRegistro.invalid"
+                        (click)="atualizarDados(usuario)">
+                        Salvar
+                    </button>
+                </div>
+                <div class="col s6">
+                    <button class="btn btn-large waves-effect waves-light grey lighten-3 grey-text text-darken-1" 
+                        style="width: 100%">Cancelar</button>
+                </div>
+            </div>
+        </div>
+        <div class="col s1"></div>
+    </div>
+</div>

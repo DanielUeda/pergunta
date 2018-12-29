@@ -1,0 +1,24 @@
+<div class="container" style="margin-top: 20px;">
+  <div class="row">
+      <ul>
+          <li class="item_pergunta" *ngFor="let p of perguntas">
+              <span>
+                  Em {{p.dataPergunta | date : 'dd/MM/yyyy'}} às {{p.dataPergunta | date: 'HH:mm'}}, 
+                  {{p.remetente.nome}} perguntou:
+              </span>
+              <p>
+                  {{p.descricao}}             
+              </p>
+              <div class="row">
+                <div class="col">
+                    <button class="btn btn-medium waves-effect waves-light grey darken-3"(click)="resposta(p)">Responder</button>
+                </div>
+                <div class="col">
+                    <button class="btn btn-medium waves-effect waves-light grey lighten-3 grey-text text-darken-1" (click)="ignorar(p._id)">Ignorar</button>
+                </div>
+              </div>
+              <div style="border-top: 1px solid"></div>
+          </li>
+      </ul>
+  </div>
+</div>

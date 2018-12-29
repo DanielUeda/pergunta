@@ -1,0 +1,41 @@
+<div class="container" style="margin-top: 20px;">
+        <div class="row">
+          <div class="col s3">
+            <form class="col s12">
+                <label for="perg">Usuario</label>
+                <select class="browser-default" [(ngModel)]="pergunta.destinatario" name="remetente">
+                    <option *ngFor="let u of usuarios" value="{{u._id}}">
+                        {{u.login}}
+                    </option>
+                </select>
+              <div class="input-field">
+                <textarea name="perg" id="perg" class="materialize-textarea" [(ngModel)]="pergunta.descricao"></textarea>
+                <label for="perg">Faça sua pergunta</label>
+              </div>
+              <div class="input-field">
+                <button class="btn waves-effect waves-light col s12 grey darken-3" (click)="perguntar()">Perguntar</button>
+              </div>
+            </form>
+          </div>
+      
+          <ul class="col s7 ">
+            <li class="item_post" *ngFor="let p of perguntas">
+              <div >
+                <span>
+                  Em {{p.dataPergunta | date: 'dd/MM/yyyy'}} às {{p.dataPergunta | date: 'HH:mm'}} eu perguntei para @{{p.destinatario.login}}
+                </span>
+                <p>
+                  {{p.descricao}}
+                </p>
+                <span>
+                  Respota (em {{p.dataResposta | date: 'dd/MM/yyyy'}}) às {{p.dataResposta | date: 'HH:mm'}}
+                </span>
+                <p>
+                  {{p.resposta}}
+                </p>
+                <div style="border-top: 1px solid"></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
